@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My To-Do App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <button onclick="archiveCompleted()">📦 Archive Completed</button>
+    <button id="darkModeToggle">Toggle Dark Mode</button>
+    <div class="container">
+    <h1>My To‑Do List</h1>
+  <div class="input-group">
+    <select id="tagInput">
+  <option value="General">General</option>
+  <option value="Work">Work</option>
+  <option value="Home">Home</option>
+  <option value="Study">Study</option>
+</select>
+  <input type="text" id="taskInput" placeholder="Add new task..." />
+  <select id="priorityInput">
+    <option value="low">Low</option>
+    <option value="medium">Med</option>
+    <option value="high">High</option>
+  </select>
+  <input type="date" id="deadlineInput" />
+  <button onclick="addTask()">Add</button>
+</div>
+    <div class="filters">
+        <button onclick="setFilter('all')">All</button>
+        <button onclick="setFilter('active')">Active</button>
+        <button onclick="setFilter('completed')">Completed</button>
+    </div>
+    <button id="undoBtn" onclick="undoDelete()" style="display:none;">↩️ Undo Delete</button>
+    <div class="stats">
+  Total: <span id="statTotal">0</span> |
+  Done: <span id="statDone">0</span> |
+  Active: <span id="statActive">0</span>
+    </div>
+    <div class="sorters">
+  <button onclick="sortTasks('priority')">Sort by Priority</button>
+  <button onclick="sortTasks('deadline')">Sort by Deadline</button>
+</div>
+<div class="export-import">
+  <button onclick="exportTasks()">⬇️ Export Tasks</button>
+  <input type="file" id="importFile" onchange="importTasks(event)" />
+<div class="progress">
+  <div id="progressBar"></div>
+</div>
+</div>
+    <input type="text" id="searchInput" placeholder="Search tasks..." oninput="renderTasks()" />
+    <ul id="taskList"></ul>
+  </div>
+  <script src="script.js"></script>
+  <div id="editModal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <input type="text" id="editInput" />
+    <button onclick="saveEdit()">Save</button>
+    <button onclick="closeModal()">Cancel</button>
+  </div>
+</div>
+</body>
+</html>
