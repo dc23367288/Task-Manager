@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ralph's Ultra To‑Do 🐶👑</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1 id="title">🐶😐 Ralph</h1>
+
+<button onclick="setTheme('dark')">🌙 Dark</button>
+<button onclick="setTheme('pastel')">🍰 Pastel</button>
+<button onclick="setTheme('neon')">⚡ Neon</button>
+<button id="loginBtn" onclick="login()">🔑 Login</button>
+<button id="logoutBtn" onclick="logout()" style="display:none;">🚪 Logout</button>
+
+<div class="input-group">
+  <input type="text" id="taskInput" placeholder="New task...">
+  <select id="priorityInput">
+    <option value="low">Low</option>
+    <option value="medium">Med</option>
+    <option value="high">High</option>
+  </select>
+  <input type="date" id="deadlineInput">
+  <select id="tagInput">
+    <option value="General">General</option>
+    <option value="Work">Work</option>
+    <option value="Home">Home</option>
+    <option value="Study">Study</option>
+  </select>
+  <label><input type="checkbox" id="recurringInput"> 🔁 Recurring</label>
+  <textarea id="descInput" placeholder="Description"></textarea>
+  <button onclick="addTask()">➕ Add</button>
+</div>
+
+<input type="text" id="searchInput" placeholder="Search..." oninput="renderTasks()">
+<select multiple id="tagFilter" onchange="renderTasks()">
+  <option value="General">General</option>
+  <option value="Work">Work</option>
+  <option value="Home">Home</option>
+  <option value="Study">Study</option>
+</select>
+
+<button onclick="sortTasks('priority')">🔼 Priority</button>
+<button onclick="sortTasks('deadline')">📅 Deadline</button>
+<button onclick="clearCompleted()">🧹 Clear Done</button>
+<button onclick="archiveCompleted()">📦 Archive Done</button>
+<button onclick="toggleArchive()">📦 Show/Hide Archive</button>
+<button onclick="exportTasks()">📤 Export</button>
+<input type="file" id="importFile" onchange="importTasks()">
+<button id="undoBtn" onclick="undoDelete()" style="display:none;">↩️ Undo Delete</button>
+
+<div class="progress"><div id="progressBar"></div></div>
+
+<div class="stats">
+ Total: <span id="statTotal">0</span> | Done: <span id="statDone">0</span> | Active: <span id="statActive">0</span>
+</div>
+
+<ul id="taskList"></ul>
+<ul id="archiveList" style="display:none;"></ul>
+
+<h2>🤖 Ask Ralph AI</h2>
+<input type="text" id="aiInput">
+<button onclick="askAI()">💬 Ask</button>
+<div id="aiResponse"></div>
+
+<div id="editModal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <input type="text" id="editInput">
+    <button onclick="saveEdit()">Save</button>
+    <button onclick="closeModal()">Cancel</button>
+  </div>
+</div>
+
+<script src="firebase-app.js"></script>
+<script src="firebase-auth.js"></script>
+<script src="firebase-firestore.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
