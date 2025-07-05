@@ -1,0 +1,104 @@
+body {
+  font-family: sans-serif;
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+body.dark {
+  background: #000000;
+  color: #000000;
+}
+body.dark input, body.dark select, body.dark textarea, body.dark button {
+  background: #333;
+  color: #ffffff;
+}
+.input-group, .filters, .sorters {
+  margin: 10px 0;
+}
+.input-group input, .input-group select, .input-group textarea {
+  margin-right: 5px;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+#taskList li, #archiveList li {
+  background: #f9f9f9;
+  margin: 5px 0;
+  padding: 8px;
+  border-left: 4px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s, transform 0.2s;
+  opacity: 0;
+  transform: translateY(-5px);
+  animation: fadeIn 0.3s forwards;
+}
+#taskList li.completed {
+  text-decoration: line-through;
+  color: #999;
+}
+#taskList li.due-soon {
+  background: #fff3cd;
+  border-left-color: #ffc107;
+}
+#taskList li.dragging {
+  opacity: 0.5;
+  background: #ccc;
+}
+button {
+  cursor: pointer;
+}
+.done-btn, .edit-btn, .delete-btn, .pin-btn, .restore-btn {
+  margin-left: 5px;
+  font-size: 12px;
+  background: none;
+  border: none;
+}
+.done-btn:hover { color: green; }
+.edit-btn:hover { color: orange; }
+.delete-btn:hover { color: #d11a2a; }
+.pin-btn:hover { color: gold; }
+.restore-btn:hover { color: blue; }
+.progress {
+  background: #ddd;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+#progressBar {
+  height: 100%;
+  width: 0%;
+  background: #007BFF;
+  transition: width 0.3s;
+}
+.modal {
+  position: fixed; top:0; left:0; right:0; bottom:0;
+  background: rgba(0,0,0,0.5);
+  display:flex; justify-content:center; align-items:center;
+}
+.modal-content {
+  background: #fff;
+  padding:20px;
+  border-radius:8px;
+  width:90%; max-width:300px;
+}
+body.dark .modal-content { background:#2c2c2c; color:#fff; }
+.badge {
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  color: #fff;
+  margin-left: 5px;
+}
+.badge.low { background: #28a745; }
+.badge.medium { background: #ffc107; color:#000; }
+.badge.high { background: #d11a2a; }
+.tag-Work { border-left-color: #007BFF !important; }
+.tag-Home { border-left-color: #28a745 !important; }
+.tag-Study { border-left-color: #ffc107 !important; }
+.tag-General { border-left-color: #6c757d !important; }
+@keyframes fadeIn {
+  to { opacity: 1; transform: translateY(0); }
+}

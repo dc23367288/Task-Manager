@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pro To‑Do App 🐶</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>🐶 Ralph’s To‑Do App</h1>
+
+  <button id="darkModeToggle">🌙 Toggle Dark Mode</button>
+
+  <div class="input-group">
+    <input type="text" id="taskInput" placeholder="Add new task...">
+    <select id="priorityInput">
+      <option value="low">Low</option>
+      <option value="medium">Med</option>
+      <option value="high">High</option>
+    </select>
+    <input type="date" id="deadlineInput">
+    <select id="tagInput">
+      <option value="General">General</option>
+      <option value="Work">Work</option>
+      <option value="Home">Home</option>
+      <option value="Study">Study</option>
+    </select>
+    <textarea id="descInput" placeholder="Description (optional)"></textarea>
+    <button onclick="addTask()">Add</button>
+  </div>
+
+  <input type="text" id="searchInput" placeholder="Search tasks..." oninput="renderTasks()">
+
+  <div class="filters">
+    <button onclick="setFilter('all')">All</button>
+    <button onclick="setFilter('active')">Active</button>
+    <button onclick="setFilter('completed')">Completed</button>
+  </div>
+
+  <div class="sorters">
+    <button onclick="sortTasks('priority')">Sort by Priority</button>
+    <button onclick="sortTasks('deadline')">Sort by Deadline</button>
+  </div>
+
+  <div class="stats">
+    Total: <span id="statTotal">0</span> |
+    Done: <span id="statDone">0</span> |
+    Active: <span id="statActive">0</span>
+  </div>
+
+  <button onclick="archiveCompleted()">📦 Archive Completed</button>
+  <button onclick="toggleArchive()">📦 Show/Hide Archive</button>
+  <button id="undoBtn" onclick="undoDelete()" style="display:none;">↩️ Undo Delete</button>
+
+  <div class="progress">
+    <div id="progressBar"></div>
+  </div>
+
+  <ul id="taskList"></ul>
+  <ul id="archiveList" style="display:none;"></ul>
+
+  <div id="editModal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <input type="text" id="editInput">
+      <button onclick="saveEdit()">Save</button>
+      <button onclick="closeModal()">Cancel</button>
+    </div>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
+<script>
